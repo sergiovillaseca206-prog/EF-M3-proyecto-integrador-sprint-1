@@ -1,0 +1,75 @@
+:root {
+  --color-fresh-green: #7bbf7d;  
+  --color-tomato-red: #e74c3c;  
+  --color-sunshine-yellow: #f1c40f;  
+  --color-cheese-yellow: #f39c12;  
+  --color-soft-brown: #d35400;
+  --color-light-cream: #f9e4b7;  
+  --color-dark-chocolate: #2c3e50;  
+  --color-basil-green: #2ecc71;  
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--color-light-cream);
+  color: var(--color-dark-chocolate);
+}
+
+h1, h2, h3 {
+  color: var(--color-tomato-red);
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.btn-primary {
+  background-color: var(--color-tomato-red);
+  border-color: var(--color-tomato-red);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-sunshine-yellow);
+  border-color: var(--color-sunshine-yellow);
+}
+
+a {
+  color: var(--color-basil-green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-sunshine-yellow);
+}
+
+form {
+  background-color: var(--color-fresh-green);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+form .form-control {
+  border: 1px solid var(--color-soft-brown);
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 15px;
+  }
+}
+
+footer {
+  background-color: var(--color-fresh-green);
+    color: var(--color-dark-chocolate);
+     border-radius: 10px;
+     padding: 20px;
+     text-align: center;
+}
