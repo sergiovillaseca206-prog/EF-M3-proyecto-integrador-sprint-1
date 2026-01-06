@@ -1,44 +1,42 @@
+// elementos del dom formulario-ingredientes-contenedores
 const form = document.getElementById("searchForm");
 const input = document.getElementById("searchInput");
 const resultsContainer = document.getElementById("results");
-
+// async-await recarga el formulario.. dinamismo HU-04
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
-
+// validacion de input
     const ingredient = input.value.trim();
     if (!ingredient) return;
-
-    // Limpiar resultados anteriores
-    resultsContainer.innerHTML = "";
-
+  
+    resultsContainer.innerHTML = "";   //limpiar resultados previos
+//          Llamada a la API
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
         const response = await fetch(url);
         const data = await response.json();
 
-        // Si no hay resultados
+//           Si no hay resultados
         if (!data.meals) {
             mostrarMensajeSinResultados();
             return;
         }
 
-        // Renderizar recetas
+//           Renderizar recetas
         renderizarRecetas(data.meals);
-
+//           Manejo de errores
     } catch (error) {
         console.error("Error al obtener recetas:", error);
         mostrarMensajeError();
     }
 });
-// ===============================
-// Renderizado dinámico de recetas
-// ===============================
+// Cards de recetas
 function renderizarRecetas(meals) {
     meals.forEach(meal => {
 
-        // Desestructuración (criterio HU-05)
+// Desestructuración nombre e imagen HU-05
         const { strMeal, strMealThumb } = meal;
-
+//plantilla de card diseño bootstrap
         resultsContainer.innerHTML += `
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm">
@@ -54,7 +52,7 @@ function renderizarRecetas(meals) {
         `;
     });
 }
-// ===============================
+
 function renderizarRecetas(meals) {
     meals.forEach(meal => {
 
@@ -78,9 +76,7 @@ function renderizarRecetas(meals) {
         `;
     });
 }
-// ===============================
-// Mensajes de estado
-// ===============================
+// mensajes de error y sin resultados HU-06
 function mostrarMensajeSinResultados() {
     resultsContainer.innerHTML = `
         <div class="col-12 text-center">
@@ -109,7 +105,7 @@ async function verIngrediente() {
 
         const data = await response.json();
 
-        // EJEMPLO: buscamos Cardamom
+
         const ingrediente = data.meals.find(
             item => item.strIngredient === "Cardamom"
         );
@@ -130,12 +126,13 @@ Tipo: ${ingrediente.strType}
         console.error(error);
         alert("Error al obtener ingrediente");
     }
+    // boton receta muestra ingrediente
 }
 async function mostrarIngrediente(nombreComida) {
     const modalBody = document.getElementById("modalBody");
 
     modalBody.innerHTML = "<p>Cargando ingrediente...</p>";
-
+//busqueda por nombre        
     try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${nombreComida}`);
         const data = await response.json();
@@ -144,7 +141,7 @@ async function mostrarIngrediente(nombreComida) {
         } else {
             const meal = data.meals[0];
 
-            // Construir lista de ingredientes dinámicamente
+
             let ingredientsHTML = "";
             for (let i = 1; i <= 20; i++) {
                 const ingredient = meal[`strIngredient${i}`];
@@ -154,7 +151,7 @@ async function mostrarIngrediente(nombreComida) {
                     ingredientsHTML += `<li>${measure || ""} ${ingredient}</li>`;
                 }
             }
-
+// plantilla modal
             modalBody.innerHTML = `
   <div class="container-fluid">
     <div class="row">

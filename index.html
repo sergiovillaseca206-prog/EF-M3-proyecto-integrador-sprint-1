@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 
 </head>
-<!-- Modal Ingrediente -->
+        <!-- Modal Ingredientes -->
+
 <div class="modal fade" id="ingredientModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Detalle del Ingrediente</h5>
@@ -34,15 +35,23 @@
     </div>
 </div>
 <body class="d-flex flex-column min-vh-100">
-    <header class="container py-5">
-        <div class="text-center mb-4">
-            <h1 class="display-5 fw-bold">Buscador de Recetas</h1>
-            <p class="text-muted">En Gourmet Go Encuentra ideas rápidas y deliciosas según tus ingredientes</p>
-        </div>
+<header class="hero d-flex align-items-center text-light">
+    <div class="overlay"></div>
+
+    <div class="container position-relative text-center hero-content">
+        <h1 class="display-4 fw-bold hero-title mb-3">Gourmet Go</h1>
+        <p class="lead mb-4">
+            Encuentra recetas rápidas y deliciosas según los ingredientes que tengas
+        </p>
 
         <form id="searchForm" class="row justify-content-center g-2">
             <div class="col-12 col-md-8">
-                <input id="searchInput" type="text" class="form-control form-control-lg" placeholder="Busca por ingredientes..." />
+                <input
+                    id="searchInput"
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Busca por ingredientes..."
+                />
             </div>
             <div class="col-12 col-md-2 d-grid">
                 <button type="submit" class="btn btn-primary btn-lg">
@@ -50,12 +59,13 @@
                 </button>
             </div>
         </form>
-    </header>
+    </div>
+</header>
     <main class="flex-fill">
         <section class="container pb-5">
-            <h2 class="mb-4">Recetas Destacadas</h2>
+            <h2 class="mb-4 text-center">Recetas Destacadas</h2>
             <div id="results" class="row g-4">
-                <!-- Las recetas se insertarán aquí dinámicamente -->
+                <!-- Las recetas automaticas -->
             </div>
 
         </section>
